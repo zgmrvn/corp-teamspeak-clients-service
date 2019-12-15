@@ -50,13 +50,13 @@ app.get('/', async (req, res) => {
 
     // if the command was ok, format the response
     if (clients.search('error id=0 msg=ok') >= 0) {
-      const reg = /^clid=(?<clid>\d+)\scid=(?<cid>\d+)\sclient_database_id=(?<clientDatabaseId>\d+)\sclient_nickname=(?<clientNickname>.+)\sclient_type=(?<clientType>\d)$/
+      const reg = /^clid=(\d+)\scid=(\d+)\sclient_database_id=(\d+)\sclient_nickname=(.+)\sclient_type=(\d)$/
   
       clients = clients.split('\n')[0];
       clients = clients.split('|');
-      clients = clients.map(c => reg.exec(c).groups);
-      clients = clients.filter(c => c.clientType == 0);
-      response = clients.map(c => sanitize(c.clientNickname));
+      clients = clients.map(c => reg.exec(c));
+      clients = clients.filter(c => c[5] == 0);
+      response = clients.map(c => sanitize(c[4]));
     }
   } catch (error) {
     console.log(error);
