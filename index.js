@@ -59,6 +59,7 @@ app.get('/', async (req, res) => {
       response = clients.map(c => sanitize(c[4]));
     }
   } catch (error) {
+    await connection.destroy();
     console.log(error);
   }
 
