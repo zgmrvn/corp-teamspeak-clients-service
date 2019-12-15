@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "name": "corp-teamspeak-clients-service",
+  "builds": [{
+      "src": "index.js",
+      "use": "@now/node-server"
+  }],
+  "routes": [{
+      "headers": {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, OPTIONS",
+          "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+      },
+      "src": "/.*",
+      "dest": "/index.js"
+  }],
+  "env": {
+    "SERVER_QUERY_USER": "@corp-teamspeak-clients-service-user",
+    "SERVER_QUERY_PASSWORD": "corp-teamspeak-clients-service-password"
+  }
+}
