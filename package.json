@@ -11,5 +11,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "telnet-client": "^1.2.4"
-  }
+  },
+  "engines" : { "node" : ">=12.0" }
 }
