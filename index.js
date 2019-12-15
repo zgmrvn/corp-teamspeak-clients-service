@@ -28,9 +28,7 @@ app.get('/', async (req, res) => {
     host: 'ts.corp-arma.fr',
     port: 10011,
     shellPrompt: 'Welcome to the TeamSpeak 3 ServerQuery interface, type "help" for a list of commands and "help <command>" for information on a specific command.',
-    timeout: 1500,
-    ors: '\r\n',
-    waitfor: '\n'
+    timeout: 1500
   }
  
   try {
@@ -42,10 +40,9 @@ app.get('/', async (req, res) => {
   let response = [];
 
   try {
-    await connection.send('use sid=1');
-    await connection.send(`login ${process.env.SERVER_QUERY_USER} ${process.env.SERVER_QUERY_PASSWORD}`);
-    let clients = await connection.send('clientlist');
-
+    await connection.send('use sid=1', { waitfor: '\n' });
+    await connection.send(`login ${process.env.SERVER_QUERY_USER} ${process.env.SERVER_QUERY_PASSWORD}`, { waitfor: '\n' });
+    let clients = await connection.send('clientlist', { waitfor: '\n' });
     connection.end();
 
     // if the command was ok, format the response
