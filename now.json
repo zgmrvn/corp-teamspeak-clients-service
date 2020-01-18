@@ -1,6 +1,15 @@
 {
   "version": 2,
   "name": "corp-teamspeak-clients-service",
+  "routes": [{
+    "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+    },
+    "src": "/api/clients",
+    "dest": "/api/clients.js"
+  }],
   "env": {
     "SERVER_QUERY_USER": "@corp-teamspeak-clients-service-server-query-user",
     "SERVER_QUERY_PASSWORD": "@corp-teamspeak-clients-service-server-query-password",
