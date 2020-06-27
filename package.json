@@ -9,8 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "now": "^16.7.3",
-    "redis": "^2.8.0",
     "telnet-client": "^1.2.4"
   },
   "engines": {
